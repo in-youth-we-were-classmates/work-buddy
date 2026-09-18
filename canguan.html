@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>橄榄树 · 私房菜 | 首页</title>
+  <!-- Google Font & Font Awesome for icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #faf7f2;
+      color: #2e241e;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- HEADER / NAV ----- */
+    header {
+      padding: 24px 0 16px;
+      border-bottom: 1px solid #e6ddd2;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 700;
+      color: #3b2c24;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .logo span {
+      color: #b36b4b;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 28px;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4d3e35;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #b36b4b;
+    }
+
+    nav a.active {
+      color: #b36b4b;
+      font-weight: 600;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #b36b4b;
+      border-radius: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-outline {
+      border: 1.5px solid #b36b4b;
+      background: transparent;
+      color: #b36b4b;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: #b36b4b;
+      color: white;
+      border-color: #b36b4b;
+    }
+
+    .btn-primary {
+      background: #b36b4b;
+      border: 1.5px solid #b36b4b;
+      color: white;
+      padding: 10px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #8f5139;
+      border-color: #8f5139;
+    }
+
+    /* ----- HERO SECTION ----- */
+    .hero {
+      padding: 48px 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1 1 350px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: #efe6dd;
+      color: #6b4f3d;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 40px;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-content h1 {
+      font-size: 52px;
+      line-height: 1.15;
+      color: #2b1e16;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 i {
+      color: #b36b4b;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: #5a4a3f;
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-bottom: 32px;
+    }
+
+    .stat-item h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #3b2c24;
+      margin-bottom: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .stat-item p {
+      font-size: 15px;
+      color: #7d6a5c;
+      margin: 0;
+    }
+
+    .hero-image {
+      flex: 1 1 380px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 220px 220px 40px 40px;
+      box-shadow: 0 25px 40px -12px rgba(60, 40, 25, 0.25);
+      object-fit: cover;
+      aspect-ratio: 0.9 / 1;
+      border: 6px solid #fff8f0;
+    }
+
+    /* decorative element */
+    .hero-image::before {
+      content: '★';
+      position: absolute;
+      font-size: 120px;
+      color: #efe1d4;
+      top: -30px;
+      right: 0;
+      z-index: -1;
+      font-family: 'Playfair Display', serif;
+      opacity: 0.5;
+      line-height: 1;
+    }
+
+    /* ----- FEATURED DISHES ----- */
+    .featured {
+      padding: 60px 0 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-header h2 {
+      font-size: 38px;
+      color: #2b1e16;
+      line-height: 1.2;
+    }
+
+    .section-header p {
+      color: #7d6a5c;
+      max-width: 400px;
+      font-size: 16px;
+    }
+
+    .dish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .dish-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px -8px rgba(60, 40, 25, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .dish-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 38px -12px rgba(60, 40, 25, 0.18);
+    }
+
+    .dish-img {
+      height: 200px;
+      background-color: #e6ddd2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: #b36b4b;
+      overflow: hidden;
+    }
+
+    .dish-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dish-info {
+      padding: 20px 20px 22px;
+    }
+
+    .dish-info h3 {
+      font-size: 22px;
+      margin-bottom: 6px;
+      font-weight: 700;
+      color: #2b1e16;
+    }
+
+    .dish-info p {
+      font-size: 15px;
+      color: #6e5c50;
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+
+    .dish-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 20px;
+      color: #b36b4b;
+    }
+
+    .rating i {
+      color: #f5b342;
+      font-size: 14px;
+      margin-right: 2px;
+    }
+
+    .rating span {
+      font-size: 14px;
+      color: #7d6a5c;
+      margin-left: 5px;
+      font-weight: 500;
+    }
+
+    /* ----- RESERVATION BANNER ----- */
+    .reserve-banner {
+      background: linear-gradient(135deg, #2b1e16 0%, #3f2c21 100%);
+      border-radius: 48px;
+      padding: 56px 48px;
+      margin: 50px 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+      box-shadow: 0 18px 30px -10px rgba(43, 30, 22, 0.3);
+    }
+
+    .reserve-text h2 {
+      color: #faf3ea;
+      font-size: 36px;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .reserve-text p {
+      color: #d9cbbc;
+      font-size: 17px;
+      max-width: 450px;
+    }
+
+    .reserve-banner .btn-primary {
+      background: #faf3ea;
+      border-color: #faf3ea;
+      color: #2b1e16;
+      font-size: 16px;
+      padding: 14px 38px;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .reserve-banner .btn-primary:hover {
+      background: #fff8f0;
+      border-color: #fff8f0;
+      color: #1f140e;
+    }
+
+    /* ----- FOOTER ----- */
+    footer {
+      padding: 40px 0 32px;
+      border-top: 1px solid #e6ddd2;
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-copyright {
+      color: #8b7869;
+      font-size: 15px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-social a {
+      color: #8b7869;
+      font-size: 20px;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover {
+      color: #b36b4b;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #8b7869;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #b36b4b;
+    }
+
+    /* ----- UTILITY / RESPONSIVE ----- */
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .header-actions {
+        justify-content: center;
+      }
+
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .section-header h2 {
+        font-size: 30px;
+      }
+
+      .reserve-banner {
+        padding: 36px 28px;
+        border-radius: 32px;
+      }
+
+      .reserve-text h2 {
+        font-size: 28px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 18px;
+      }
+
+      .hero-content h1 {
+        font-size: 34px;
+      }
+
+      .hero-image img {
+        border-radius: 160px 160px 30px 30px;
+      }
+
+      .btn-outline, .btn-primary {
+        padding: 8px 18px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo">
+        Olive<span>&</span>Thyme
+      </div>
+      <nav>
+        <a href="#" class="active">首页</a>
+        <a href="#">菜单</a>
+        <a href="#">关于我们</a>
+        <a href="#">博客</a>
+        <a href="#">联系</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="btn-outline"><i class="fas fa-phone-alt" style="margin-right: 6px;"></i> 预订</a>
+        <a href="#" class="btn-primary">点餐</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section -->
+    <div class="container hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-seedling" style="margin-right: 6px;"></i> 当季食材 · 匠心烹饪
+        </div>
+        <h1>
+          品尝 <i>地中海</i><br>风味之旅
+        </h1>
+        <p>
+          新鲜海鲜、有机蔬菜与特级初榨橄榄油，每一道菜都讲述着阳光与海洋的故事。
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3>4.9</h3>
+            <p>顾客评分</p>
+          </div>
+          <div class="stat-item">
+            <h3>120+</h3>
+            <p>创意菜品</p>
+          </div>
+          <div class="stat-item">
+            <h3>15年</h3>
+            <p>烹饪传承</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="#" class="btn-primary" style="padding: 14px 32px; font-size: 16px;">立即预订</a>
+          <a href="#" class="btn-outline" style="padding: 14px 30px; font-size: 16px;">查看菜单</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- 用emoji风格图片代替实际图片，保持视觉丰富度，实际使用时替换为真实图片 -->
+        <img 
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='700' viewBox='0 0 600 700'%3E%3Crect width='600' height='700' fill='%23d9c6b0'/%3E%3Ccircle cx='300' cy='250' r='140' fill='%23b38b6d'/%3E%3Ccircle cx='300' cy='250' r='100' fill='%23e6d2bb'/%3E%3Cpath d='M240 380 L360 380 L330 480 L270 480 Z' fill='%23a56b4b'/%3E%3Ccircle cx='250' cy='220' r='20' fill='%238b5e3c'/%3E%3Ccircle cx='350' cy='220' r='20' fill='%238b5e3c'/%3E%3Cellipse cx='300' cy='270' rx='40' ry='30' fill='%23c49a6c'/%3E%3Ctext x='300' y='600' font-family='Georgia' font-size='38' fill='%235a3c2c' text-anchor='middle'%3E🍽️ 主厨推荐%3C/text%3E%3C/svg%3E"
+          alt="餐厅美食展示"
+          loading="lazy"
+        >
+      </div>
+    </div>
+
+    <!-- Featured dishes -->
+    <div class="container featured">
+      <div class="section-header">
+        <h2>今日主厨精选</h2>
+        <p>每日选用最新鲜的食材，以传统地中海手法呈现自然本味。</p>
+      </div>
+      <div class="dish-grid">
+        <!-- Dish 1 -->
+        <div class="dish-card">
+          <div class="dish-img">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d4b89c'/%3E%3Ccircle cx='200' cy='140' r='80' fill='%23c49a6c'/%3E%3Ccircle cx='160' cy='110' r='12' fill='%23e6d2bb'/%3E%3Ccircle cx='230' cy='120' r='10' fill='%23e6d2bb'/%3E%3Cpath d='M160 180 Q200 230 240 180' stroke='%238b5e3c' stroke-width='8' fill='none' /%3E%3Ctext x='200' y='270' font-family='Georgia' font-size='28' fill='%233d2c1f' text-anchor='middle'%3E🥗 希腊沙拉%3C/text%3E%3C/svg%3E" alt="希腊沙拉">
+          </div>
+          <div class="dish-info">
+            <h3>爱琴海希腊沙拉</h3>
+            <p>番茄、黄瓜、红洋葱、卡拉马塔橄榄、菲达奶酪，佐特级初榨橄榄油。</p>
+            <div class="dish-footer">
+              <span class="price">¥68</span>
+              <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                <span>4.8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Dish 2 -->
+        <div class="dish-card">
+          <div class="dish-img">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23b38b6d'/%3E%3Cpath d='M100 200 Q200 110 300 200' stroke='%238b5e3c' stroke-width='16' fill='none' /%3E%3Ccircle cx='200' cy='170' r='24' fill='%23e6d2bb'/%3E%3Ctext x='200' y='270' font-family='Georgia' font-size='28' fill='%233d2c1f' text-anchor='middle'%3E🍝 海鲜意面%3C/text%3E%3C/svg%3E" alt="海鲜意面">
+          </div>
+          <div class="dish-info">
+            <h3>地中海海鲜意面</h3>
+            <p>大虾、青口、鱿鱼圈与番茄藏红花酱汁，搭配手工扁意面。</p>
+            <div class="dish-footer">
+              <span class="price">¥98</span>
+              <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>5.0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Dish 3 -->
+        <div class="dish-card">
+          <div class="dish-img">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d4b89c'/%3E%3Crect x='120' y='120' width='160' height='100' rx='30' fill='%23a56b4b'/%3E%3Ccircle cx='200' cy='130' r='18' fill='%23e6d2bb'/%3E%3Ctext x='200' y='270' font-family='Georgia' font-size='28' fill='%233d2c1f' text-anchor='middle'%3E🥩 烤羊排%3C/text%3E%3C/svg%3E" alt="香草烤羊排">
+          </div>
+          <div class="dish-info">
+            <h3>迷迭香烤羊排</h3>
+            <p>新西兰羊排，配蒜香土豆泥和红酒汁，外焦里嫩。</p>
+            <div class="dish-footer">
+              <span class="price">¥138</span>
+              <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                <span>4.9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Dish 4 -->
+        <div class="dish-card">
+          <div class="dish-img">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23b38b6d'/%3E%3Cpath d='M150 200 Q200 120 250 200' stroke='%23e6d2bb' stroke-width='14' fill='none' /%3E%3Ccircle cx='200' cy='140' r='30' fill='%23c49a6c'/%3E%3Ctext x='200' y='270' font-family='Georgia' font-size='28' fill='%233d2c1f' text-anchor='middle'%3E🍰 提拉米苏%3C/text%3E%3C/svg%3E" alt="提拉米苏">
+          </div>
+          <div class="dish-info">
+            <h3>经典提拉米苏</h3>
+            <p>马斯卡彭芝士、浓缩咖啡与可可粉，意式经典甜点。</p>
+            <div class="dish-footer">
+              <span class="price">¥48</span>
+              <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>4.9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reservation Banner -->
+    <div class="container">
+      <div class="reserve-banner">
+        <div class="reserve-text">
+          <h2>预订你的味蕾盛宴</h2>
+          <p>无论是浪漫晚餐还是朋友聚会，我们为你预留最舒适的位置。</p>
+        </div>
+        <a href="#" class="btn-primary"><i class="fas fa-calendar-check" style="margin-right: 8px;"></i> 立即预订</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-copyright">
+        © 2025 Olive&Thyme · 地中海餐厅
+      </div>
+      <div class="footer-links">
+        <a href="#">隐私政策</a>
+        <a href="#">服务条款</a>
+        <a href="#">招聘信息</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
